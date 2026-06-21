@@ -8,5 +8,11 @@ def handle_packet(interface):
 
 def analyze_the_packets(packet):
     packet.show()
+    if packet.haslayer(http.HTTPRequest):
+        if packet.haslayer(scapy.Raw):
+            print(packet[scapy.Raw].load)
+
+
+
 
 handle_packet("eth0")
